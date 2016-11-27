@@ -268,6 +268,7 @@ def get_window(window_type):
                             [LANG(32100), call % ("mode=custom,dbid=" + movie_id)]]
             else:
                 options += [[LANG(32165), "RunPlugin(plugin://plugin.video.couchpotato_manager/movies/add?imdb_id=" + imdb_id + ")||Notification(script.extendedinfo,%s))" % LANG(32059)]]
+                options += [["Meta", "RunPlugin(plugin://plugin.video.meta/movies/play/imdb/" + imdb_id + "/select)||Notification(script.extendedinfo,%s)" % "Meta"]]
             if xbmc.getCondVisibility("system.hasaddon(script.libraryeditor)") and movie_id:
                 options.append([LANG(32103), "RunScript(script.libraryeditor,DBID=" + movie_id + ")"])
             options.append([LANG(1049), "Addon.OpenSettings(script.extendedinfo)"])

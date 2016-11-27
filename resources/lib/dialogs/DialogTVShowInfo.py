@@ -5,6 +5,7 @@
 
 import xbmc
 import xbmcgui
+import urllib
 from ..Utils import *
 from .. import ImageTools
 from .. import TheMovieDB as tmdb
@@ -136,6 +137,7 @@ def get_window(window_type):
                             [LANG(32100), call % ("mode=custom,dbid=" + self.dbid)]]
             else:
                 options += [[LANG(32166), "RunPlugin(plugin://plugin.video.sickrage?action=addshow&show_name=%s)" % title]]
+                options += [["Meta", 'ActivateWindow(10025,"plugin://plugin.video.meta/tv/search_term/' + title + '/1")||Notification(script.extendedinfo,%s)' % "Meta"]]
             if xbmc.getCondVisibility("system.hasaddon(script.libraryeditor)") and self.dbid:
                 options.append([LANG(32103), "RunScript(script.libraryeditor,DBID=" + self.dbid + ")"])
             options.append([LANG(1049), "Addon.OpenSettings(script.extendedinfo)"])
